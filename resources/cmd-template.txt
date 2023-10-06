@@ -1,0 +1,5 @@
+cd /d "%~dp0"
+ren key.$SSHUSER.txt id_rsa
+icacls id_rsa /inheritance:r
+icacls id_rsa /grant %USERNAME%:f
+$WINCMD

